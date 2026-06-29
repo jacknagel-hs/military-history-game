@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-paper: #e9dec0;
+  --color-paper-dark: #d8c8a0;
+  --color-olive: #3f4427;
+  --color-olive-deep: #262b16;
+  --color-ink: #2b2620;
+  --color-brass: #ad8a3d;
+  --color-rust: #8c3024;
+  --font-display: var(--font-bebas);
+  --font-body: var(--font-courier);
+  --font-stamp: var(--font-special-elite);
+}
+
+body {
+  color: var(--color-ink);
+  font-family: var(--font-courier), "Courier New", monospace;
+  background-color: var(--color-olive-deep);
+  background-image:
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.08) 0px,
+      rgba(0, 0, 0, 0.08) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+  min-height: 100vh;
+}
+
+.font-display {
+  font-family: var(--font-bebas), sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.font-stamp {
+  font-family: var(--font-special-elite), monospace;
+}
+
+.paper-panel {
+  background-color: var(--color-paper);
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.03) 0px,
+    rgba(0, 0, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 26px
+  );
+  border: 2px solid var(--color-ink);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.25), 0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+.stamp {
+  font-family: var(--font-special-elite), monospace;
+  color: var(--color-rust);
+  border: 2px solid var(--color-rust);
+  border-radius: 4px;
+  transform: rotate(-4deg);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  display: inline-block;
+}

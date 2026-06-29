@@ -1,0 +1,43 @@
+import Link from "next/link";
+import { createClient } from "@/lib/supabase/server";
+import { signOut } from "@/app/login/actions";
+
+export default async function Home() {
+  const supabase = await createClient();
+  const { data } = await supabase.auth.getUser();
+
+  return (
+    <main className="mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center gap-8 px-4 text-center">
+      <div className="paper-panel flex flex-col items-center gap-6 px-8 py-10">
+        <span className="stamp px-3 py-1 text-xs">Daily Briefing</span>
+        <h1 className="font-display text-6xl text-ink sm:text-7xl">
+          War &amp; Peace Daily
+        </h1>
+        <p className="max-w-md text-ink/80">
+          Plot battles on the map, identify weapons and commanders from
+          dossier photos, and answer one hard trivia question. Five questions,
+          once a day.
+        </p>
+
+        <Link
+          href="/play"
+          className="border-2 border-ink bg-olive px-8 py-3 font-display text-2xl text-paper transition-colors hover:bg-olive-deep"
+        >
+          Begin Today&apos;s Briefing
+        </Link>
+
+        {data.user ? (
+          <form action={signOut}>
+            <button className="font-stamp text-sm text-ink/60 underline">
+              Sign out ({data.user.email})
+            </button>
+          </form>
+        ) : (
+          <Link href="/login" className="font-stamp text-sm text-ink/60 underline">
+            Officer sign-in
+          </Link>
+        )}
+      </div>
+    </main>
+  );
+}
