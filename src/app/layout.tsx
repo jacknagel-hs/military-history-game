@@ -20,9 +20,22 @@ const specialElite = Special_Elite({
   subsets: ["latin"],
 });
 
+const RECRUITMENT_POSTER_URL =
+  "https://upload.wikimedia.org/wikipedia/commons/5/59/J._M._Flagg%2C_I_Want_You_for_U.S._Army_poster_%281917%29.jpg";
+
 export const metadata: Metadata = {
   title: "War & Peace Daily",
   description: "A daily military history map room briefing.",
+  openGraph: {
+    title: "Enlist in today's War Room mission",
+    description: "A daily military history map room briefing.",
+    images: [RECRUITMENT_POSTER_URL],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Enlist in today's War Room mission",
+    images: [RECRUITMENT_POSTER_URL],
+  },
 };
 
 export default function RootLayout({

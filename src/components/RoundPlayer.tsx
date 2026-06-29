@@ -58,11 +58,15 @@ export default function RoundPlayer({
         </span>
       </div>
 
-      {!lastResult && current.type === "map" && (
+      {current.type === "map" && (
         <MapQuestion
+          key={current.id}
           prompt={current.prompt}
-          disabled={false}
+          disabled={!!lastResult}
+          targetLat={current.target_lat!}
+          targetLng={current.target_lng!}
           onSubmit={(lat, lng) => {
+            if (lastResult) return;
             const distanceKm = haversineDistanceKm(
               lat,
               lng,

@@ -1,7 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { QuestionResult } from "@/lib/game/types";
+
+const RECRUITMENT_POSTER_URL =
+  "https://upload.wikimedia.org/wikipedia/commons/5/59/J._M._Flagg%2C_I_Want_You_for_U.S._Army_poster_%281917%29.jpg";
 
 function buildShareText(results: QuestionResult[]) {
   const correctCount = results.filter((r) => r.correct).length;
@@ -48,12 +52,25 @@ export default function ResultsScreen({ results }: { results: QuestionResult[] }
         ))}
       </ul>
 
-      <a
-        href={buildSmsHref(buildShareText(results))}
-        className="self-start border-2 border-ink bg-rust px-4 py-2 text-sm font-semibold text-paper"
-      >
-        Share my score
-      </a>
+      <div className="flex flex-col gap-3 border-2 border-ink bg-paper-dark p-4">
+        <div className="relative h-64 w-full overflow-hidden border-2 border-ink sepia">
+          <Image
+            src={RECRUITMENT_POSTER_URL}
+            alt="WWI recruitment poster"
+            fill
+            className="object-contain"
+          />
+        </div>
+        <p className="font-display text-center text-2xl text-ink">
+          Enlist in today&apos;s War Room mission
+        </p>
+        <a
+          href={buildSmsHref(buildShareText(results))}
+          className="self-center border-2 border-ink bg-rust px-4 py-2 text-sm font-semibold text-paper"
+        >
+          Share my score
+        </a>
+      </div>
 
       <div className="flex flex-col gap-2 border-2 border-dashed border-ink/50 p-4">
         <p className="font-display text-xl text-ink">
