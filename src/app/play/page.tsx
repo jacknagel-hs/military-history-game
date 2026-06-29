@@ -4,9 +4,11 @@ import PlayClient from "./PlayClient";
 export default async function PlayPage() {
   const supabase = await createClient();
 
-  // Play today's round if it exists, otherwise fall back to the most
-  // recent five_questions round (handy in local dev before today exists).
-  const today = new Date().toISOString().slice(0, 10);
+  // The daily round flips over at midnight Pacific, not UTC — en-CA gives
+  // YYYY-MM-DD directly, matching the DB's date column format.
+  const today = new Date().toLocaleDateString("en-CA", {
+    timeZone: "America/Los_Angeles",
+  });
 
   let { data: round } = await supabase
     .from("rounds")
@@ -16,10 +18,13 @@ export default async function PlayPage() {
     .maybeSingle();
 
   if (!round) {
+    // Gap day (content wasn't seeded ahead of time) — fall back to the most
+    // recent PAST round rather than jumping forward into future content.
     const { data: fallback } = await supabase
       .from("rounds")
       .select("id, round_date, mode, answer_label")
       .eq("mode", "five_questions")
+      .lte("round_date", today)
       .order("round_date", { ascending: false })
       .limit(1)
       .maybeSingle();

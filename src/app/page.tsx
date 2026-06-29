@@ -33,9 +33,20 @@ export default async function Home() {
             </button>
           </form>
         ) : (
-          <Link href="/login" className="font-stamp text-sm text-ink/60 underline">
-            Officer sign-in
-          </Link>
+          <div className="flex gap-3">
+            <Link
+              href="/login"
+              className="border-2 border-ink px-4 py-2 text-sm font-semibold text-ink"
+            >
+              Login
+            </Link>
+            <Link
+              href="/login"
+              className="border-2 border-ink bg-ink px-4 py-2 text-sm font-semibold text-paper"
+            >
+              Sign up
+            </Link>
+          </div>
         )}
       </div>
     </main>
