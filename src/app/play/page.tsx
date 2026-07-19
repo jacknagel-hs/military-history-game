@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import ModeNav from "@/components/ModeNav";
 import PlayClient from "./PlayClient";
 
 export default async function PlayPage() {
@@ -34,6 +35,7 @@ export default async function PlayPage() {
   if (!round) {
     return (
       <main className="mx-auto max-w-2xl px-4 py-10">
+        <ModeNav active="/play" />
         <div className="paper-panel px-6 py-8 text-ink">
           No round is available yet. Seed one with `npm run seed`.
         </div>
@@ -49,6 +51,7 @@ export default async function PlayPage() {
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-10">
+      <ModeNav active="/play" />
       <PlayClient roundId={round.id} questions={questions ?? []} />
     </main>
   );

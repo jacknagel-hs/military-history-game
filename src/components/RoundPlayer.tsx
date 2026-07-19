@@ -84,7 +84,7 @@ export default function RoundPlayer({
         />
       )}
 
-      {!lastResult && (current.type === "weapon_photo" || current.type === "person_photo") && (
+      {!lastResult && current.type === "person_photo" && (
         <PhotoFreeResponseQuestion
           prompt={current.prompt}
           imageUrl={current.image_url!}

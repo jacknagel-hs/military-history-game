@@ -2,7 +2,7 @@ const EARTH_RADIUS_KM = 6371;
 
 // A guess within this radius of the target counts as "correct" — roughly
 // right country/region, not pinpoint precision.
-const MAP_CORRECT_THRESHOLD_KM = 250;
+const MAP_CORRECT_THRESHOLD_KM = 300;
 
 export function haversineDistanceKm(
   lat1: number,

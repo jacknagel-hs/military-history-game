@@ -16,6 +16,20 @@ function hideLabels(map: MapboxMap) {
   }
 }
 
+// dark-v11's water and land tones sit close to black, which makes small
+// islands hard to spot against the ocean. Lighten both a step so land/water
+// stays legible without losing the dark "war room" look.
+function softenContrast(map: MapboxMap) {
+  for (const layer of map.getStyle()?.layers ?? []) {
+    if (layer.type === "fill" && layer.id.includes("water")) {
+      map.setPaintProperty(layer.id, "fill-color", "#35505c");
+    }
+    if (layer.type === "background") {
+      map.setPaintProperty(layer.id, "background-color", "#4a4238");
+    }
+  }
+}
+
 export default function MapQuestion({
   prompt,
   disabled,
@@ -41,6 +55,7 @@ export default function MapQuestion({
   function handleLoad(e: MapboxEvent) {
     mapRef.current = e.target;
     hideLabels(e.target);
+    softenContrast(e.target);
   }
 
   function handleSubmit() {

@@ -14,9 +14,8 @@ export default async function Home() {
           War &amp; Peace Daily
         </h1>
         <p className="max-w-md text-ink/80">
-          Plot battles on the map, identify weapons and commanders from
-          dossier photos, and answer one hard trivia question. Five questions,
-          once a day.
+          Plot battles on the map and identify commanders from dossier
+          photos. Five questions, once a day.
         </p>
 
         <Link
@@ -25,6 +24,21 @@ export default async function Home() {
         >
           Begin Today&apos;s Briefing
         </Link>
+
+        <div className="flex flex-wrap justify-center gap-3">
+          <Link
+            href="/year-guess"
+            className="border-2 border-ink px-4 py-2 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-paper"
+          >
+            Try: Year Guess
+          </Link>
+          <Link
+            href="/five-clues"
+            className="border-2 border-ink px-4 py-2 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-paper"
+          >
+            Try: Five Clues
+          </Link>
+        </div>
 
         {data.user ? (
           <form action={signOut}>

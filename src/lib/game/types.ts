@@ -1,4 +1,4 @@
-export type QuestionType = "map" | "weapon_photo" | "person_photo" | "trivia";
+export type QuestionType = "map" | "person_photo" | "trivia";
 export type Difficulty = "easy" | "tougher" | "very_tough";
 
 export interface Question {
