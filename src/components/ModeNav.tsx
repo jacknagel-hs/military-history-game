@@ -15,8 +15,8 @@ export default function ModeNav({ active }: { active: (typeof MODES)[number]["hr
           href={mode.href}
           className={
             mode.href === active
-              ? "stamp px-3 py-1 text-xs"
-              : "border-2 border-ink/40 px-3 py-1 font-stamp text-xs uppercase tracking-wide text-ink/60 transition-colors hover:border-ink hover:text-ink"
+              ? "border-2 border-white bg-white/10 px-3 py-1 font-stamp text-xs uppercase tracking-wide text-white"
+              : "border-2 border-white/40 px-3 py-1 font-stamp text-xs uppercase tracking-wide text-white/60 transition-colors hover:border-white hover:text-white"
           }
         >
           {mode.label}
