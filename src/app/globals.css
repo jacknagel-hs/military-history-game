@@ -51,6 +51,31 @@ body {
   box-shadow: 0 6px 0 rgba(0, 0, 0, 0.25), 0 10px 20px rgba(0, 0, 0, 0.35);
 }
 
+.legal-copy h2 {
+  font-family: var(--font-bebas), sans-serif;
+  letter-spacing: 0.02em;
+  font-size: 1.5rem;
+  color: var(--color-ink);
+  margin-top: 0.75rem;
+}
+
+.legal-copy p,
+.legal-copy li {
+  line-height: 1.6;
+}
+
+.legal-copy ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.legal-copy a {
+  text-decoration: underline;
+}
+
 .stamp {
   font-family: var(--font-special-elite), monospace;
   color: var(--color-rust);

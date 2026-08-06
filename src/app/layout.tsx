@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Courier_Prime, Special_Elite } from "next/font/google";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -48,7 +49,10 @@ export default function RootLayout({
       lang="en"
       className={`${bebasNeue.variable} ${courierPrime.variable} ${specialElite.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
